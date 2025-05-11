@@ -41,7 +41,7 @@ function MagicShow() {
 
   return (
     <div>
-      {isLoading && <Loading text="您的魔法即将生效..." />}
+      {isLoading && <Loading title="Magic Page" text="魔法即将生效..." />}
       {isError && <p>获取数据失败，请重试。</p>}
       {!isLoading && !isError && data && (
         <iframe srcDoc={htmlString} style={{ width: '100%', height: '100vh' }} />

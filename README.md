@@ -1,5 +1,3 @@
-# Free Page
+<h1 align="center">Magic Page</h1>
 
-## introduction
-
-I want to create a free page. It can show anything you want like a magic.
+<p align="center">I want to create a free page. It can show anything you want like a magic.</p>
