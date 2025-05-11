@@ -4,7 +4,6 @@ import { Toaster } from "@/components/ui/sonner"
 import { toast } from "sonner"
 
 function Header() {
-  toast.success("链接已复制到剪贴板");
   const handleShare = () => {
     navigator.clipboard.writeText(window.location.href)
       .then(() => {

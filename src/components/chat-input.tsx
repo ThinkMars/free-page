@@ -17,7 +17,7 @@ function ChatInput() {
     <div className="flex items-center justify-between w-full p-1 rounded-lg">
       <Input
         type="text"
-        placeholder="希望显示什么内容呢？"
+        placeholder="输入任何你想要显示的内容"
         maxLength={50}
         value={inputValue}
         onChange={handleInputChange}
