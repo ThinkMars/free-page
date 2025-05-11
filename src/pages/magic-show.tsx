@@ -14,6 +14,7 @@ function MagicShow() {
   const { data, isLoading, isError } = useQuery<string>({
     queryKey: ['magic-show-data', messageId],
     retry: 1,
+    gcTime: 0,
     queryFn: async () => {
       const baseUrl = messageId ? `${import.meta.env.VITE_API_URL as string}/magic-page/preview` : `${import.meta.env.VITE_API_URL as string}/magic-page`;
 
