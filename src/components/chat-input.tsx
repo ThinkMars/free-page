@@ -6,10 +6,24 @@ import { useState } from 'react';
 function ChatInput() {
   const [inputValue, setInputValue] = useState("");
   const { handleNavToMagicShow } = useNavToMagicShow();
+  const [isComposing, setIsComposing] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (isComposing) return; // 组合输入期间不处理
+
     // 禁止输入空格
-    const valueWithoutSpaces = e.target.value.replace(/\s+/g, '');
+    const valueWithoutSpaces = e.target.value.replace(/\s+/g, '').trim();
+    setInputValue(valueWithoutSpaces);
+  };
+
+  const handleCompositionStart = () => {
+    setIsComposing(true);
+  };
+
+  const handleCompositionEnd = (e: React.CompositionEvent<HTMLInputElement>) => {
+    setIsComposing(false);
+    // 可选：compositionend 后再执行一次处理
+    const valueWithoutSpaces = e.currentTarget.value.replace(/\s+/g, '');
     setInputValue(valueWithoutSpaces);
   };
 
@@ -21,6 +35,8 @@ function ChatInput() {
         maxLength={50}
         value={inputValue}
         onChange={handleInputChange}
+        onCompositionStart={handleCompositionStart}
+        onCompositionEnd={handleCompositionEnd}
         className="p-2 border border-gray-300 rounded-lg"
       />
       <Button
